@@ -31,8 +31,11 @@ export class AdminComponent implements OnInit {
   
   }
   nextClicked(event:any)
-  {
+  {//send this data
+    if(this.nameOfQuiz!="" && this.subjectList.length>0)
+    {var send_data=[{name:this.nameOfQuiz,subjects:this.subjectList}]    
     this.displayBasic=false;
+  }
   }
   onTagSelected(val:any)
   {

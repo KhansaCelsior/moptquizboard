@@ -7,8 +7,9 @@ import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { TagModule } from 'primeng/tag';
+import {CardModule} from 'primeng/card';
 const primngModules = [CheckboxModule,ButtonModule,DialogModule,InputTextModule
-,FormsModule,TagModule]
+,FormsModule,TagModule,CardModule]
 
 @NgModule({
   declarations: [],
