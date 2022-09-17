@@ -10,9 +10,11 @@ import { QuizAdminModule } from './modules/quiz-admin/quiz-admin.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
+    
     
   ],
   imports: [

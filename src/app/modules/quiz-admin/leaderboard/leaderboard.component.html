@@ -1,0 +1,22 @@
+<div>
+    <div class="headerLayouts">SCORE BOARD</div>
+    <br>
+    <div class="tableLayouts">
+        <p-table [columns]="columnsLeaderboard" [value]="tempLeaderboardData" [rows]="10" [sortOrder]="-1">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-car let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        {{car[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

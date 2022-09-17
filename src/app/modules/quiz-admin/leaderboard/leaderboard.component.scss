@@ -1,0 +1,44 @@
+.tableLayouts {
+
+    display: block;
+    float: center;
+    padding-left: 400px !important;
+    padding-right: 250px !important;
+    padding-top: 20px !important;
+
+}
+
+.imageLayout {
+    height: 500px;
+    width: 500px;
+    float: center;
+
+
+    padding-left: 400px;
+}
+
+.headerLayouts {
+    display: block;
+    margin-top: 10px;
+    float: center;
+    padding-left: 600px !important;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+::ng-deep .p-datatable-tbody tr:nth-child(even) {
+    background-color: #4e46e5 !important;
+    color: whitesmoke;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+::ng-deep .p-datatable-tbody>tr {
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+::ng-deep .p-datatable-tbody>th {
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

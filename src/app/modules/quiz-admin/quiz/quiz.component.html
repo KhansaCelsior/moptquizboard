@@ -1,0 +1,30 @@
+<div class=" flex justify-center items-center">
+    <!-- Quiz Modal -->
+    <div *ngIf="!isQuizCompleted">
+
+        <div class="questionLayout">
+            <label class="my-16 ">{{Question}}</label>
+        </div>
+
+        <i class="pi pi-clock timer">&nbsp;{{counter}}</i>
+        <div class="row inline-flex">
+            <ng-container *ngFor="let item of options">
+                <p-card class="column mx-8 mt-32 " header="Option"
+                    [ngClass]="{'cardColorBlue': !item.isSelected,'cardColorGreen': item.isSelected}"
+                    (click)="optionSelected(item)">
+                    <span class="place-content-center ">
+                        {{item.option}}
+                    </span>
+                </p-card>
+            </ng-container>
+        </div>
+
+    </div>
+
+
+</div>
+<div *ngIf="isQuizCompleted">
+    <img class="imageLayout"
+        src="https://blog.vantagecircle.com/content/images/2020/07/thank-you-messages-for-boss.png">
+    <div class="headingLayout">Your responses are submitted!</div>
+</div>

@@ -43,37 +43,36 @@
      
     </ul>
   </div> -->
-
-    <img class="drop-shadow-sm ml-[210px]" src="https://img.freepik.com/premium-vector/question-mark-document-business-woman-asking-questions_132971-408.jpg" alt="pic">
-    <div class="flex justify-center items-center  ">  
-     <button pButton type="button"
-     (click)="handleClick($event)">
-        <i class='bx bx-edit'></i> 
-        Create a quiz
+  <img class="drop-shadow-sm ml-[210px]"
+    src="https://img.freepik.com/premium-vector/question-mark-document-business-woman-asking-questions_132971-408.jpg"
+    alt="pic">
+  <div class="flex justify-center items-center  ">
+    <button pButton type="button" (click)="handleClick($event)">
+      <i class='pi pi-pencil'></i>&nbsp;
+      Create a quiz
     </button>
- </div>
- <p-dialog classs="flex justify-center items-center" header={{Header}} [(visible)]="displayBasic" [style]="{width: '40vw'}">
-<label>Name of Quiz</label><br>
-<input class="h-10 w-96" pInputText [(ngModel)]="nameOfQuiz" required/>
-<br><br>
-<label >Choose relevant subjects</label><br><br>
-<p-tag class="p-1" *ngFor="let item of items"  
-
-(click)="onTagSelected(item)">
-  {{item.subject}}  
-  <i *ngIf="item.selected==true" class='bx bx-check'></i>
-  <i *ngIf="item.selected==false"class='bx bx-x'></i>
-</p-tag>
-  <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" 
-      (click)="nextClicked($event)" 
-      [disabled]="!(nameOfQuiz!='' && subjectList.length>0)"
-      label="Next" styleClass="p-button-text">
-    </p-button>
-  </ng-template>
-</p-dialog>
+  </div>
+  <p-dialog classs="flex justify-center items-center" header={{Header}} [(visible)]="displayBasic"
+    [style]="{width: '40vw'}">
+    <label>Name of Quiz</label><br>
+    <input class="h-10 w-96" pInputText [(ngModel)]="nameOfQuiz" required />
+    <br><br>
+    <label>Choose relevant subjects</label><br><br>
+    <p-tag class="p-1" *ngFor="let item of items" (click)="onTagSelected(item)">
+      {{item.subject}}
+      <i *ngIf="item.selected==true" class='pi pi-check'></i>
+      <i *ngIf="item.selected==false" class='pi pi-times'></i>
+    </p-tag>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="nextClicked($event)" [disabled]="!(nameOfQuiz!='' && subjectList.length>0)"
+        label="Create Quiz" styleClass="p-button-text">
+      </p-button>
+    </ng-template>
+  </p-dialog>
 
 </div>
 
 <!-- [ngStyle]="{background:item.selected == true? 'success': 'info'}"
-  [ngStyle]="{severity=item.selected == true? 'success': 'info'}" -->
+  [ngStyle]="{severity=item.selected == true? 'success': 'info'}"
+
+ 'background-color':'#4e46e5',-->
