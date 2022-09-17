@@ -8,6 +8,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { QuizAdminModule } from './modules/quiz-admin/quiz-admin.module';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +17,9 @@ import { QuizAdminModule } from './modules/quiz-admin/quiz-admin.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     CoreModule,
     SharedModule,
     QuizAdminModule

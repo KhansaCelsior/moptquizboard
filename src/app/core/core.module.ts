@@ -4,14 +4,23 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SidenavigationComponent } from './sidenavigation/sidenavigation.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CoreRoutingModule } from './core-routing.module';
 const CoreComponents = [HeaderComponent, LoginComponent, RegisterComponent,SidenavigationComponent];
 
 @NgModule({
   declarations: [CoreComponents],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule, 
+    ReactiveFormsModule ,
+    CoreRoutingModule
   ],
-  exports:[CoreComponents]
+  exports:[CoreComponents],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+],
 })
 export class CoreModule { }
