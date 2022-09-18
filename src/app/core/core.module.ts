@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { SidenavigationComponent } from './sidenavigation/sidenavigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreRoutingModule } from './core-routing.module';
-const CoreComponents = [HeaderComponent, LoginComponent, RegisterComponent,SidenavigationComponent];
+const CoreComponents = [HeaderComponent, LoginComponent, RegisterComponent];
 
 @NgModule({
   declarations: [CoreComponents],

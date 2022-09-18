@@ -12,16 +12,17 @@ import { TableModule } from 'primeng/table';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PanelModule } from 'primeng/panel';
 import { RadioButtonModule } from 'primeng/radiobutton';
-
+import { SidenavigationComponent } from './components/sidenavigation/sidenavigation.component';
 const primngModules = [CheckboxModule, ButtonModule, DialogModule, InputTextModule
   , FormsModule, InputTextareaModule, TagModule, CardModule, TableModule, RadioButtonModule, PanelModule]
 
+  const components = [SidenavigationComponent];
 @NgModule({
-  declarations: [],
+  declarations: [components],
   imports: [
     CommonModule,
     primngModules
   ],
-  exports: [primngModules]
+  exports:[components, primngModules]
 })
 export class SharedModule { }

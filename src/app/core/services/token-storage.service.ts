@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import  APPCONSTANTS  from '../../contants/constants';
+import { DataSharedService } from 'src/app/shared/service/data-shared.service';
+import APPCONSTANTS from '../../contants/constants';
 
- @Injectable({
-  providedIn: 'root'
+@Injectable({
+  providedIn: 'root',
 })
 export class TokenStorageService {
-  constructor() { }
+  constructor(private dataSharedService : DataSharedService) {}
 
   signOut(): void {
-    console.log('APPCONSTANTS: ', APPCONSTANTS);
-    //window.sessionStorage.clear();
+    window.sessionStorage.clear();
+    this.dataSharedService.setuserLogged(false)
   }
 
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(APPCONSTANTS.TOKEN_KEY);
     window.sessionStorage.setItem(APPCONSTANTS.TOKEN_KEY, token);
+    this.dataSharedService.setuserLogged(true);
   }
 
   public getToken(): string | null {
@@ -34,4 +36,12 @@ export class TokenStorageService {
 
     return {};
   }
+
+  isUserLogged() {
+    if (this.getToken()) {
+      return true;
+    }
+    return false;
+  }
+  
 }

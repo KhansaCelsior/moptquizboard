@@ -28,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     QuizAdminModule,
     
   ],
+  exports: [SharedModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }

@@ -11,8 +11,21 @@ import { QuizGeneratorComponent } from './modules/quiz-admin/quiz-generator/quiz
 import { QuizDashboardComponent } from './modules/quiz-admin/quiz-dashboard/quiz-dashboard.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      path: 'login',
+    },
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    data: {
+      path: 'register',
+    },
+  },
   { path: 'quiz', component: QuizComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'user', component: UserComponent },
@@ -20,13 +33,14 @@ const routes: Routes = [
   { path: 'quizGenerate', component: QuizGeneratorComponent },
   { path: 'admin', component: AdminComponent },
   {
-    path: 'dashboard', component: AdminComponent,
+    path: 'dashboard',
+    component: AdminComponent,
     // canActivate: [AuthGuardService]
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

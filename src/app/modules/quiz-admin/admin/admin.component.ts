@@ -4,7 +4,7 @@ import { QuizServiceService } from '../quiz-service.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
   displayBasic: boolean = false;
@@ -66,7 +66,8 @@ export class AdminComponent implements OnInit {
         if (temp.categoryname == val.categoryname) {
           this.subjectList.splice(i, 1)
         }
-      })
+      });
     }
   }
+
 }
