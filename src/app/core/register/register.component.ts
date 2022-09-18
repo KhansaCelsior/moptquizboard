@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class RegisterComponent implements OnInit {
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      isadmin: 1
     });
   }
 
@@ -36,7 +39,7 @@ export class RegisterComponent implements OnInit {
     // }
     this.authService.register(this.registerForm.value).subscribe({
       next: (data) => {
-        console.log(data);
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.log('err: ', err);
