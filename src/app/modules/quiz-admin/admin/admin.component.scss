@@ -1,0 +1,26 @@
+@import '~primeicons/primeicons.css';
+
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.cardColorBlue {
+    ::ng-deep .p-card {
+        background: #4e46e5 !important;
+    }
+}
+
+.cardColorGreen {
+    ::ng-deep .p-card {
+        background: green !important;
+    }
+}
+
+::ng-deep .p-card {
+    background: #4e46e5 !important;
+    width: 8rem;
+    height: 8rem;
+    margin-bottom: 2em;
+    color: white;
+}

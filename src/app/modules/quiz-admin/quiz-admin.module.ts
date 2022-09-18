@@ -6,6 +6,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { UserComponent } from './user/user.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { QuizGeneratorComponent } from './quiz-generator/quiz-generator.component';
+import { QuizDashboardComponent } from './quiz-dashboard/quiz-dashboard.component';
 
 
 @NgModule({
@@ -13,12 +15,22 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     AdminComponent,
     UserComponent,
     QuizComponent,
-    LeaderboardComponent],
+    LeaderboardComponent,
+    QuizGeneratorComponent,
+    QuizDashboardComponent],
   imports: [
     CommonModule,
     QuizAdminRoutingModule,
     SharedModule
   ],
-  exports: [AdminComponent, UserComponent, QuizComponent, LeaderboardComponent]
+  exports: [
+    AdminComponent,
+    UserComponent,
+    QuizComponent,
+    QuizGeneratorComponent,
+    LeaderboardComponent,
+    QuizDashboardComponent
+
+  ]
 })
 export class QuizAdminModule { }

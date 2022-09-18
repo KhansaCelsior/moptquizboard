@@ -1,0 +1,63 @@
+.cardColorBlue {
+    ::ng-deep .p-card {
+        background: #4e46e5 !important;
+    }
+}
+
+.cardColorGreen {
+    ::ng-deep .p-card {
+        background: green !important;
+    }
+}
+
+::ng-deep .p-card {
+    background: #4e46e5 !important;
+    width: 10.5rem;
+    height: 11rem;
+    margin-bottom: 2em;
+    color: white;
+}
+
+.headingLayout {
+    font-size: 35px;
+    float: center;
+    padding-left: 410px;
+    padding-top: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.textboxLayout {
+    margin-top: -17px !important;
+    background: transparent;
+    width: 8rem;
+    height: 7rem;
+
+}
+
+.textarealayout {
+    width: 900px;
+    margin: 20px 0 30px 200px;
+}
+
+.questionLayout {
+    font-size: 28px;
+    font-weight: 600;
+    float: center;
+    padding: 0px 0px 0 0px !important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.headingLayout {
+    font-size: 28px;
+    font-weight: 200;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.buttonLayout {
+    margin-right: 100px;
+    ;
+}
+
+::ng-deep .p-card .p-card-content {
+    padding: -0.75rem 0 !important;
+}

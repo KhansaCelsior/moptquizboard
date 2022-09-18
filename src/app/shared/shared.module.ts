@@ -9,8 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PanelModule } from 'primeng/panel';
+import { RadioButtonModule } from 'primeng/radiobutton';
+
 const primngModules = [CheckboxModule, ButtonModule, DialogModule, InputTextModule
-  , FormsModule, TagModule, CardModule, TableModule]
+  , FormsModule, InputTextareaModule, TagModule, CardModule, TableModule, RadioButtonModule, PanelModule]
 
 @NgModule({
   declarations: [],

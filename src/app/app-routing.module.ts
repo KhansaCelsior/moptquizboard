@@ -7,6 +7,8 @@ import { AuthGuardService } from './core/guards/authguards';
 import { QuizComponent } from './modules/quiz-admin/quiz/quiz.component';
 import { UserComponent } from './modules/quiz-admin/user/user.component';
 import { LeaderboardComponent } from './modules/quiz-admin/leaderboard/leaderboard.component';
+import { QuizGeneratorComponent } from './modules/quiz-admin/quiz-generator/quiz-generator.component';
+import { QuizDashboardComponent } from './modules/quiz-admin/quiz-dashboard/quiz-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +16,9 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'user', component: UserComponent },
+  { path: 'quizDashboard', component: QuizDashboardComponent },
+  { path: 'quizGenerate', component: QuizGeneratorComponent },
+  { path: 'admin', component: AdminComponent },
   {
     path: 'dashboard', component: AdminComponent,
     // canActivate: [AuthGuardService]
