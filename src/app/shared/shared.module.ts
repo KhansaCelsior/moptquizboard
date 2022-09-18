@@ -16,13 +16,13 @@ import { SidenavigationComponent } from './components/sidenavigation/sidenavigat
 const primngModules = [CheckboxModule, ButtonModule, DialogModule, InputTextModule
   , FormsModule, InputTextareaModule, TagModule, CardModule, TableModule, RadioButtonModule, PanelModule]
 
-  const components = [SidenavigationComponent];
+const components = [SidenavigationComponent];
 @NgModule({
   declarations: [components],
   imports: [
     CommonModule,
     primngModules
   ],
-  exports:[components, primngModules]
+  exports: [components, primngModules]
 })
 export class SharedModule { }

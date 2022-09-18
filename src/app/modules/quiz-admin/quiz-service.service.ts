@@ -29,9 +29,9 @@ export class QuizServiceService {
       httpOptions
     );
   }
-  updateQuiz(quizData: any): Observable<any> {
+  updateQuiz(quizData: any, id: number): Observable<any> {
     return this.http.patch(
-      environment.API_BASEURL + 'quiz',
+      environment.API_BASEURL + 'quiz/' + id,
       quizData,
       httpOptions
     );

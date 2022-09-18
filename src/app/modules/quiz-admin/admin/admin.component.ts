@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
     this.handleClick();
   }
   handleClick() {
-    this.displayBasic = true;
+    this.displayBasic = false;
     this.quizService.getCategory().subscribe(
       data => {
         this.items = data.data;
@@ -49,7 +49,6 @@ export class AdminComponent implements OnInit {
       let send_data = [{ name: this.nameOfQuiz, subjects: this.subjectList }]
       this.displayBasic = false;
       this.displayQuizType = true;
-      this.displayQuizType = false;
       let userData = this.tokenService.getUser();
       let obj = new quizData();
       obj.userid = userData.userid;
@@ -70,11 +69,27 @@ export class AdminComponent implements OnInit {
   }
   onTypeSaved(event: any) {
     this.displayQuizType = false;
-    let userData = this.tokenService.getUser();
     this.router.navigate(['/quizGenerate']);
+    let userData = this.tokenService.getUser();
+    let quizDatas = this.tokenService.getQuiz();
     let obj = new quizData();
-
+    obj.userid = userData.userid;
+    obj.categoryid = this.subjectList[0].categoryid;
+    obj.quizname = this.nameOfQuiz;
+    obj.questiontype = this.typeOfQuizSelected.type;
+    let quizid = quizDatas.quizid
+    delete obj.isSelected;
+    this.quizService.updateQuiz(obj, quizid).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.tokenService.setQuiz(data);
+      },
+      error: (err) => {
+        console.log('err: ', err);
+      },
+    });
   }
+
   typeSelected(event: any) {
     this.typeOfQuizSelected = event;
     event.isSelected = true;
