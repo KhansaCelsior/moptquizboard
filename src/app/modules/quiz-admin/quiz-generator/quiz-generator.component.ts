@@ -59,7 +59,7 @@ export class QuizGeneratorComponent implements OnInit {
       const getQuizId = this.tokenService.getQuiz();
       console.log('getQuizId: ', getQuizId);
       let obj = new quizGenerator();
-      obj.quizid = 1;
+      obj.quizid = getQuizId.quizid;
       obj.correctanswer = this.correctOption;
       obj.option1 = this.option1Card;
       obj.option2 = this.option2Card;

@@ -46,7 +46,7 @@ export class TokenStorageService {
 
   setQuiz(quiz:any){
     window.sessionStorage.removeItem(APPCONSTANTS.QUIZ_KEY);
-    window.sessionStorage.setItem(APPCONSTANTS.QUIZ_KEY, JSON.stringify(quiz));
+    window.sessionStorage.setItem(APPCONSTANTS.QUIZ_KEY, JSON.stringify(quiz.data));
   }
   public getQuiz(): any {
     const quiz = window.sessionStorage.getItem(APPCONSTANTS.QUIZ_KEY);

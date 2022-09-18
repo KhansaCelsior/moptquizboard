@@ -52,6 +52,13 @@ export class QuizServiceService {
       httpOptions
     );
   }
+
+  getQuestion(quizId: number): Observable<any> {
+    return this.http.get(
+      environment.API_BASEURL + 'quiz/question/' + quizId,
+      httpOptions
+    );
+  }
 }
 
 
