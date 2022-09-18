@@ -25,6 +25,9 @@
     color: white;
 }
 
-.buttonLayout {
-    margin-left: 10px !important;
+::ng-deep .p-element {
+   // margin-left: 10px !important;
+    // position: relative !important;
+    // left: 80px !important;
+
 }

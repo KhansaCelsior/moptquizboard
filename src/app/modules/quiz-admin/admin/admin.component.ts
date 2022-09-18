@@ -12,41 +12,40 @@ import { quizData } from './admin.model';
 export class AdminComponent implements OnInit {
   displayBasic: boolean = false;
   displayQuizType: boolean = false;
-  Header: any = "Create a quiz";
+  Header: any = 'Create a quiz';
   typeOfQuizSelected: any = [];
-  HeaderForType: any = "Select Type for quiz";
+  HeaderForType: any = 'Select Type for quiz';
   typeOfQuiz: any = [];
   subjectList: any = [];
   items: any;
-  nameOfQuiz: string = "";
-  constructor(private quizService: QuizServiceService,
+  nameOfQuiz: string = '';
+  constructor(
+    private quizService: QuizServiceService,
     private tokenService: TokenStorageService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.typeOfQuiz = [
-      { type: "MCQ", isSelected: false, icon: "pi pi-check-square" },
-      { type: "Fill Ups", isSelected: false, icon: "pi pi-minus" },
-      { type: "Reorder", isSelected: false, icon: "pi pi-sort-amount-up" },
-      { type: "True/False", isSelected: false, icon: "pi pi-question" },
+      { type: 'MCQ', isSelected: false, icon: 'pi pi-check-square' },
+      { type: 'Fill Ups', isSelected: false, icon: 'pi pi-minus' },
+      { type: 'Reorder', isSelected: false, icon: 'pi pi-sort-amount-up' },
+      { type: 'True/False', isSelected: false, icon: 'pi pi-question' },
     ];
-    this.handleClick();
+    this.quizService.getCategory().subscribe((data) => {
+      this.items = data.data;
+      this.items.forEach((temp: any, i: number) => {
+        temp.isSelected = false;
+      });
+    });
   }
   handleClick() {
-    this.displayBasic = false;
-    this.quizService.getCategory().subscribe(
-      data => {
-        this.items = data.data;
-        this.items.forEach((temp: any, i: number) => {
-          temp.isSelected = false;
-        })
-      });
-
+    this.displayBasic = true;
   }
   nextClicked(event: any) {
     // send this data
-    if (this.nameOfQuiz != "" && this.subjectList.length > 0) {
-      let send_data = [{ name: this.nameOfQuiz, subjects: this.subjectList }]
+    if (this.nameOfQuiz != '' && this.subjectList.length > 0) {
+      let send_data = [{ name: this.nameOfQuiz, subjects: this.subjectList }];
       this.displayBasic = false;
       this.displayQuizType = true;
       let userData = this.tokenService.getUser();
@@ -77,7 +76,7 @@ export class AdminComponent implements OnInit {
     obj.categoryid = this.subjectList[0].categoryid;
     obj.quizname = this.nameOfQuiz;
     obj.questiontype = this.typeOfQuizSelected.type;
-    let quizid = quizDatas.quizid
+    let quizid = quizDatas.quizid;
     delete obj.isSelected;
     this.quizService.updateQuiz(obj, quizid).subscribe({
       next: (data) => {
@@ -101,18 +100,15 @@ export class AdminComponent implements OnInit {
   }
   onTagSelected(val: any) {
     if (val.isSelected == false) {
-      this.subjectList.push(val)
-      val.isSelected = true
-    }
-    else {
-
+      this.subjectList.push(val);
+      val.isSelected = true;
+    } else {
       val.isSelected = false;
       this.subjectList.forEach((temp: any, i: number) => {
         if (temp.categoryname == val.categoryname) {
-          this.subjectList.splice(i, 1)
+          this.subjectList.splice(i, 1);
         }
       });
     }
   }
-
 }

@@ -36,7 +36,7 @@ export class QuizDashboardComponent implements OnInit {
 
   createLink() {
     this.linkGenerated = true;
-    this.router.navigate(['/quizDashboard']);
+    this.router.navigate(['/dashboard']);
   }
   loadDashboardData() {
     const getQuizId = this.tokenService.getQuiz();
@@ -44,8 +44,6 @@ export class QuizDashboardComponent implements OnInit {
     this.quizServiceService.getQuestion(getQuizId.quizid).subscribe({
       next: (data) => {
         this.tempData = data.data;
-
-        //this.router.navigate(['/quizDashboard']);
       },
       error: (err) => {},
     });
