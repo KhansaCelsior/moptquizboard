@@ -20,12 +20,16 @@
 
         </ng-container>
     </div>
-    <button class=" align-middle w-96 " pButton type="button" (click)="createLink()">
-        <span class="pl-36">Save</span>
-    </button>
-    <p-dialog classs="flex justify-center items-center headerLayout" header="Link" [(visible)]="linkGenerated"
+
+    <div class=" flex justify-center headerLayout p-b-20">
+        <button class="w-96 " pButton type="button" (click)="createLink()">
+            <span class="pl-36">Save</span>
+        </button>
+    </div>
+
+    <!-- <p-dialog classs="flex justify-center items-center headerLayout" header="Link" [(visible)]="linkGenerated"
         [style]="{width: '60vw'}">
         <label>link</label>
 
-    </p-dialog>
+    </p-dialog> -->
 </div>

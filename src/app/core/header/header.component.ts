@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataSharedService } from 'src/app/shared/service/data-shared.service';
 import { TokenStorageService } from '../services/token-storage.service';
@@ -16,18 +16,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentPath: any;
   constructor(
     private token: TokenStorageService,
-    private router: Router,
-    private dataSharedService: DataSharedService
+    private dataSharedService: DataSharedService,
+    private route:ActivatedRoute, private router:Router
   ) {
-    console.log(this.router)
+    
   }
 
   ngOnInit(): void {
-    console.log('isUserLogged', this.isUserLogged);
     this.userLoggedSub = this.dataSharedService.userLogged$.subscribe(
       (data) => (this.isUserLogged = data)
     );
- 
   }
 
   logout() {
