@@ -59,6 +59,7 @@ export class AdminComponent implements OnInit {
       this.quizService.createQuiz(obj).subscribe({
         next: (data) => {
           console.log(data);
+          this.displayQuizType = true;
           this.tokenService.setQuiz(data);
         },
         error: (err) => {

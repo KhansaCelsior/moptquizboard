@@ -44,6 +44,14 @@ export class QuizServiceService {
   //     httpOptions
   //   );
   // }
+
+  createQuestion(questionData: any): Observable<any> {
+    return this.http.post(
+      environment.API_BASEURL + 'quiz/question',
+      questionData,
+      httpOptions
+    );
+  }
 }
 
 

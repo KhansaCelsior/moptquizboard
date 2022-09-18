@@ -1,68 +1,84 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/core/services/token-storage.service';
+import { QuizServiceService } from '../quiz-service.service';
 import { quizGenerator } from './quizGenerator.model';
 
 @Component({
   selector: 'app-quiz-generator',
   templateUrl: './quiz-generator.component.html',
-  styleUrls: ['./quiz-generator.component.scss']
+  styleUrls: ['./quiz-generator.component.scss'],
 })
 export class QuizGeneratorComponent implements OnInit {
   public registerForm!: FormGroup;
-  quizQuestion: string = "";
-  resize: boolean = false; selectedValue: string = "";
-  groupname: string = "one"
+  quizQuestion: string = '';
+  resize: boolean = false;
+  selectedValue: string = '';
+  groupname: string = 'one';
   optionsArray: any = [];
-  option1Card: string = "";
-  option2Card: string = "";
-  option3Card: string = "";
-  option4Card: string = "";
-  optionRadio: string = "";
+  option1Card: string = '';
+  option2Card: string = '';
+  option3Card: string = '';
+  option4Card: string = '';
+  optionRadio: string = '';
   isSaveDisabled: boolean = true;
-  correctOption: string = "";
+  correctOption: string = '';
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private quizServiceService: QuizServiceService,
+    private tokenService: TokenStorageService
+  ) {}
 
   ngOnInit(): void {
     this.optionsArray = [];
-
   }
 
-  optionSelected(item: any) { }
+  optionSelected(item: any) {}
   onSaveClicked() {
     if (this.quizQuestion != '' && this.optionRadio != '') {
-      this.isSaveDisabled = false
+      this.isSaveDisabled = false;
 
       let val = this.optionRadio;
       switch (val) {
-        case "one":
+        case 'one':
           this.correctOption = this.option1Card;
           break;
-        case "two":
+        case 'two':
           this.correctOption = this.option2Card;
           break;
-        case "three":
+        case 'three':
           this.correctOption = this.option3Card;
           break;
-        case "four":
+        case 'four':
           this.correctOption = this.option4Card;
           break;
       }
-
+      const getQuizId = this.tokenService.getQuiz();
+      console.log('getQuizId: ', getQuizId);
       let obj = new quizGenerator();
+      obj.quizid = 1;
       obj.correctanswer = this.correctOption;
       obj.option1 = this.option1Card;
       obj.option2 = this.option2Card;
       obj.option3 = this.option3Card;
       obj.option4 = this.option3Card;
       obj.question = this.quizQuestion;
-      obj.questiontype = "MCQ";
+      obj.questiontype = 'MCQ';
       //save data here
 
-      alert("data saved");
-      this.router.navigate(['/quizDashboard']);
-
-    } else { this.isSaveDisabled = true; }
+      this.quizServiceService.createQuestion(obj).subscribe({
+        next: (data) => {
+          this.router.navigate(['/quizDashboard']);
+        },
+        error: (err) => {
+          console.log('err: ', err);
+        },
+      });
+    } else {
+      this.isSaveDisabled = true;
+    }
   }
 }

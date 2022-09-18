@@ -1,6 +1,6 @@
 export class quizGenerator {
 
-    quizId: number | undefined;
+    quizid: number | undefined;
     questiontype: string | undefined;
     question: string | undefined;
     correctanswer: string | undefined;
