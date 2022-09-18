@@ -1,5 +1,3 @@
-<!-- <div class=" flex justify-center items-center"> -->
-<!-- Quiz Modal -->
 <div class="headingLayout">Enter Your Question and Options</div>
 
 <div class="questionLayout">
@@ -10,56 +8,47 @@
 
 <div class="row inline-flex pl-[180px]">
 
-    <p-card class="column mx-8 mt-0 " (click)="optionSelected($event)">
+    <p-card class="column mx-8 mt-0 ">
 
         <span class="place-content-center ">
-            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="quizQuestion">
+            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="option1Card">
                     </textarea>
         </span>
         <div class="flex justify-center">
-            <p-radioButton name="groupname" value="one" [(ngModel)]="selectedValue"></p-radioButton>
+            <p-radioButton name="groupname" value="one" [(ngModel)]="optionRadio"></p-radioButton>
         </div>
     </p-card>
-    <p-card class="column mx-8 mt-0 " (click)="optionSelected($event)">
+    <p-card class="column mx-8 mt-0 ">
 
         <span class="place-content-center ">
-            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="quizQuestion">
+            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="option2Card">
                         </textarea>
         </span>
         <div class="flex justify-center">
-            <p-radioButton name="groupname" value="one" [(ngModel)]="selectedValue"></p-radioButton>
+            <p-radioButton name="groupname" value="two" [(ngModel)]="optionRadio"></p-radioButton>
         </div>
     </p-card>
-    <p-card class="column mx-8 mt-0 " (click)="optionSelected($event)">
+    <p-card class="column mx-8 mt-0 ">
 
         <span class="place-content-center ">
-            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="quizQuestion">
+            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="option3Card">
                         </textarea>
         </span>
         <div class="flex justify-center">
-            <p-radioButton name="groupname" value="one" [(ngModel)]="selectedValue"></p-radioButton>
+            <p-radioButton name="groupname" value="three" [(ngModel)]="optionRadio"></p-radioButton>
         </div>
     </p-card>
-    <p-card class="column mx-8 mt-0 " (click)="optionSelected($event)">
+    <p-card class="column mx-8 mt-0 ">
 
         <span class="place-content-center ">
-            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="quizQuestion">
+            <textarea class="textboxLayout" placeholder="Enter Option " pInputTextarea [(ngModel)]="option4Card">
                         </textarea>
         </span>
         <div class="flex justify-center">
-            <p-radioButton name="groupname" value="one" [(ngModel)]="selectedValue"></p-radioButton>
+            <p-radioButton name="groupname" value="four" [(ngModel)]="optionRadio"></p-radioButton>
         </div>
     </p-card>
 </div>
 <div class="buttonLayout">
-    <p-button class="float-right" label="Save"></p-button>
+    <p-button class="float-right" label="Save" [disabled]="isSaveDisabled" (click)="onSaveClicked()"></p-button>
 </div>
-
-
-
-
-<!-- </div> -->
-
-
-<!-- 
-[ngClass]="{'cardColorBlue': !item.isSelected,'cardColorGreen': item.isSelected}" -->

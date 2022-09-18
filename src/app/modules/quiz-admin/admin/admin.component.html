@@ -92,7 +92,7 @@
     </div>
 
     <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="nextClicked($event)" [disabled]="!(nameOfQuiz!='' && subjectList.length>0)"
+      <p-button icon="pi pi-check" (click)="onTypeSaved($event)" [disabled]="!(nameOfQuiz!='' && subjectList.length>0)"
         label="Create Quiz" styleClass="p-button-text">
       </p-button>
     </ng-template>
