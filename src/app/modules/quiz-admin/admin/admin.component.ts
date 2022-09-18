@@ -29,9 +29,10 @@ export class AdminComponent implements OnInit {
       { type: "Fill Ups", isSelected: false, icon: "pi pi-minus" },
       { type: "Reorder", isSelected: false, icon: "pi pi-sort-amount-up" },
       { type: "True/False", isSelected: false, icon: "pi pi-question" },
-    ]
+    ];
+    this.handleClick();
   }
-  handleClick(event: any) {
+  handleClick() {
     this.displayBasic = true;
     this.quizService.getCategory().subscribe(
       data => {
@@ -58,7 +59,7 @@ export class AdminComponent implements OnInit {
       this.quizService.createQuiz(obj).subscribe({
         next: (data) => {
           console.log(data);
-          localStorage.setItem("quizData", data);
+          this.tokenService.setQuiz(data);
         },
         error: (err) => {
           console.log('err: ', err);

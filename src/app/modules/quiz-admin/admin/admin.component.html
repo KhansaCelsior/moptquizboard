@@ -1,100 +1,86 @@
-<div class="min-h-screen bg-grey-50  pb-20">
+<div class="min-h-screen bg-grey-50 pb-20">
   <app-sidenavigation></app-sidenavigation>
-  <!-- <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden">
-    <div class="flex items-center justify-center h-20 shadow-md">
-      <h1 class="text-3xl uppercase text-indigo-500">My Library</h1>
-    </div>
-    <ul class="flex flex-col py-4">
-      <li>
-        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class='bx bxs-book'></i></span>
-          <span class="text-sm font-medium">All my content</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class='bx bxs-pencil'></i></span>
-          <span class="text-sm font-medium">Created by me</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class='bx bx-border-radius'></i></span>
-          <span class="text-sm font-medium">Previously used</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class='bx bxs-like'></i></span>
-          <span class="text-sm font-medium">Liked by me</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-chat"></i></span>
-          <span class="text-sm font-medium">Shared by me</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class='bx bx-book-content'></i></span>
-          <span class="text-sm font-medium">Drafts</span>
-        </a>
-      </li>
-     
-    </ul>
-  </div> -->
   <!-- Image on background -->
-  <img class="drop-shadow-sm ml-[210px]"
-    src="https://img.freepik.com/premium-vector/question-mark-document-business-woman-asking-questions_132971-408.jpg"
-    alt="pic">
-  <div class="flex justify-center items-center  ">
-    <button pButton type="button" (click)="handleClick($event)">
-      <i class='pi pi-pencil'></i>&nbsp;
-      Create a quiz
+  <div class="flex justify-center items-center">
+    <div>
+      <img
+      class="drop-shadow-sm ml-[210px]"
+      src="/assets/images/img.jpg"
+      alt="pic"
+    />
+    </div>
+ 
+  </div>
+   
+  <div class="flex justify-center items-center">
+    <button pButton type="button" (click)="handleClick()">
+      <i class="pi pi-pencil"></i>&nbsp; Create a quiz
     </button>
   </div>
 
   <!-- Dialog box for name and category -->
 
-  <p-dialog classs="flex justify-center items-center headerLayout" header={{Header}} [(visible)]="displayBasic"
-    [style]="{width: '40vw'}">
-    <label>Name of Quiz</label><br>
+  <p-dialog
+    classs="flex justify-center items-center headerLayout"
+    header="{{ Header }}"
+    [(visible)]="displayBasic"
+    [style]="{ width: '40vw' }"
+  >
+    <label>Name of Quiz</label><br />
     <input class="h-10 w-96" pInputText [(ngModel)]="nameOfQuiz" required />
-    <br><br>
-    <label>Choose relevant subjects</label><br><br>
+    <br /><br />
+    <label>Choose relevant subjects</label><br /><br />
     <p-tag class="p-1" *ngFor="let item of items" (click)="onTagSelected(item)">
-      {{item.categoryname}}
-      <i *ngIf="item.isSelected==true" class='pi pi-check'></i>
-      <i *ngIf="item.isSelected==false" class='pi pi-times'></i>
+      {{ item.categoryname }}
+      <i *ngIf="item.isSelected == true" class="pi pi-check"></i>
+      <i *ngIf="item.isSelected == false" class="pi pi-times"></i>
     </p-tag>
     <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="nextClicked($event)" [disabled]="!(nameOfQuiz!='' && subjectList.length>0)"
-        label="Create Quiz" styleClass="p-button-text">
+      <p-button
+        icon="pi pi-check"
+        (click)="nextClicked($event)"
+        [disabled]="!(nameOfQuiz != '' && subjectList.length > 0)"
+        label="Create Quiz"
+        styleClass="p-button-text"
+      >
       </p-button>
     </ng-template>
   </p-dialog>
 
   <!-- Dialog box for type of quiz -->
 
-  <p-dialog classs="flex justify-center items-center headerLayout" header={{HeaderForType}}
-    [(visible)]="displayQuizType" [style]="{width: '60vw'}">
-
+  <p-dialog
+    classs="flex justify-center items-center headerLayout"
+    header="{{ HeaderForType }}"
+    [(visible)]="displayQuizType"
+    [style]="{ width: '60vw' }"
+  >
     <div class="row inline-flex">
       <ng-container *ngFor="let item of typeOfQuiz">
-        <p-card class="column mx-8 mt-10 "
-          [ngClass]="{'cardColorBlue': !item.isSelected,'cardColorGreen': item.isSelected}"
-          (click)="typeSelected(item)">
-          <span class="place-content-center ">
-            <i class='{{item.icon}}'></i><br>
-            {{item.type}} </span>
+        <p-card
+          class="column mx-8 mt-10"
+          [ngClass]="{
+            cardColorBlue: !item.isSelected,
+            cardColorGreen: item.isSelected
+          }"
+          (click)="typeSelected(item)"
+        >
+          <span class="place-content-center">
+            <i class="{{ item.icon }}"></i><br />
+            {{ item.type }}
+          </span>
         </p-card>
       </ng-container>
     </div>
 
     <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="onTypeSaved($event)" [disabled]="!(nameOfQuiz!='' && subjectList.length>0)"
-        label="Create Quiz" styleClass="p-button-text">
+      <p-button
+        icon="pi pi-check"
+        (click)="onTypeSaved($event)"
+        [disabled]="!(nameOfQuiz != '' && subjectList.length > 0)"
+        label="Create Quiz"
+        styleClass="p-button-text"
+      >
       </p-button>
     </ng-template>
   </p-dialog>

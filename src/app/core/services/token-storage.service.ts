@@ -43,5 +43,18 @@ export class TokenStorageService {
     }
     return false;
   }
+
+  setQuiz(quiz:any){
+    window.sessionStorage.removeItem(APPCONSTANTS.QUIZ_KEY);
+    window.sessionStorage.setItem(APPCONSTANTS.QUIZ_KEY, JSON.stringify(quiz));
+  }
+  public getQuiz(): any {
+    const quiz = window.sessionStorage.getItem(APPCONSTANTS.QUIZ_KEY);
+    if (quiz) {
+      return JSON.parse(quiz);
+    }
+
+    return {};
+  }
   
 }

@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: AdminComponent,
-    // canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService]
   },
 ];
 
