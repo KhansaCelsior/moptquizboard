@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 import { QuizServiceService } from '../quiz-service.service';
 import { quizData } from './admin.model';
 
@@ -19,6 +20,7 @@ export class AdminComponent implements OnInit {
   items: any;
   nameOfQuiz: string = "";
   constructor(private quizService: QuizServiceService,
+    private tokenService: TokenStorageService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -43,20 +45,32 @@ export class AdminComponent implements OnInit {
   nextClicked(event: any) {
     // send this data
     if (this.nameOfQuiz != "" && this.subjectList.length > 0) {
-      var send_data = [{ name: this.nameOfQuiz, subjects: this.subjectList }]
+      let send_data = [{ name: this.nameOfQuiz, subjects: this.subjectList }]
       this.displayBasic = false;
       this.displayQuizType = true;
+      this.displayQuizType = false;
+      let userData = this.tokenService.getUser();
+      let obj = new quizData();
+      obj.userid = userData.userid;
+      obj.categoryid = this.subjectList[0].categoryid;
+      obj.quizname = this.nameOfQuiz;
+      delete obj.isSelected;
+      this.quizService.createQuiz(obj).subscribe({
+        next: (data) => {
+          console.log(data);
+          localStorage.setItem("quizData", data);
+        },
+        error: (err) => {
+          console.log('err: ', err);
+        },
+      });
     }
   }
   onTypeSaved(event: any) {
     this.displayQuizType = false;
+    let userData = this.tokenService.getUser();
     this.router.navigate(['/quizGenerate']);
-    var obj = new quizData();
-    obj.userId = 1;
-    obj.categoryId = this.subjectList[0].categoryid;
-    obj.questionType = this.typeOfQuizSelected[0].type;
-    obj.quizName = this.nameOfQuiz;
-    //save here in api
+    let obj = new quizData();
 
   }
   typeSelected(event: any) {

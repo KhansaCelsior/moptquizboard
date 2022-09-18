@@ -1,9 +1,9 @@
 export class quizData {
-    userId: number | undefined;
-    quizId: number | undefined;
-    categoryId: number | undefined;
+    userid: number | undefined;
+    quizid: number | undefined;
+    categoryid: number | undefined;
     category: string | undefined;
-    quizName: string | undefined;
-    questionType: string | undefined;
-    isSelected: boolean = false;
+    quizname: string | undefined;
+    questiontype: string = "";
+    isSelected?: boolean = false;
 }
