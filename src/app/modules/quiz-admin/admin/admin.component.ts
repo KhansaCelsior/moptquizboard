@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { QuizServiceService } from '../quiz-service.service';
+import { quizData } from './admin.model';
 
 @Component({
   selector: 'app-admin',
@@ -8,7 +10,7 @@ import { QuizServiceService } from '../quiz-service.service';
 })
 export class AdminComponent implements OnInit {
   displayBasic: boolean = false;
-  displayQuizType: boolean = true;
+  displayQuizType: boolean = false;
   Header: any = "Create a quiz";
   typeOfQuizSelected: any = [];
   HeaderForType: any = "Select Type for quiz";
@@ -16,7 +18,8 @@ export class AdminComponent implements OnInit {
   subjectList: any = [];
   items: any;
   nameOfQuiz: string = "";
-  constructor(private quizService: QuizServiceService) { }
+  constructor(private quizService: QuizServiceService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.typeOfQuiz = [
@@ -44,6 +47,17 @@ export class AdminComponent implements OnInit {
       this.displayBasic = false;
       this.displayQuizType = true;
     }
+  }
+  onTypeSaved(event: any) {
+    this.displayQuizType = false;
+    this.router.navigate(['/quizGenerate']);
+    var obj = new quizData();
+    obj.userId = 1;
+    obj.categoryId = this.subjectList[0].categoryid;
+    obj.questionType = this.typeOfQuizSelected[0].type;
+    obj.quizName = this.nameOfQuiz;
+    //save here in api
+
   }
   typeSelected(event: any) {
     this.typeOfQuizSelected = event;

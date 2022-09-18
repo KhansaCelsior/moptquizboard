@@ -3,5 +3,7 @@ export class quizData {
     quizId: number | undefined;
     categoryId: number | undefined;
     category: string | undefined;
+    quizName: string | undefined;
+    questionType: string | undefined;
     isSelected: boolean = false;
 }

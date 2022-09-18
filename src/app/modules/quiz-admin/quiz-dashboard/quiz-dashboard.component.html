@@ -1,22 +1,31 @@
 <div class=" items-center">
-    <div class=" flex justify-center">
+    <div class=" flex justify-center headerLayout">
         QUIZ DASHBOARD
     </div>
     <div class="p-10">
-        <ng-container>
+        <ng-container *ngFor="let item of tempData">
             <p-panel class="m-10">
                 <ng-template pTemplate="header" class="float-right">
                     <div class="float-right">
-                        <i class="pi pi-pencil float-right"></i>&nbsp;
-                        <i class="pi pi-trash float-right"></i>
+                        <i class="pi pi-pencil float-right" (click)="onEditClicked(item)"></i>&nbsp;
+                        <i class="pi pi-trash float-right" (click)="onDeleteClicked(item)"></i>
                     </div>
                 </ng-template>
-                Body Content
+                {{item.question}}
                 <ng-template pTemplate="footer">
-                    Footer content here
+                    {{item.option1}}&nbsp;{{item.option2}}&nbsp;{{item.option3}}&nbsp;{{item.option4}}
+                    <span>Correct Answer: {{item.correctAnswer}}</span>
                 </ng-template>
             </p-panel>
 
         </ng-container>
     </div>
+    <button class=" align-middle w-96 " pButton type="button" (click)="createLink()">
+        <span class="pl-36">Save</span>
+    </button>
+    <p-dialog classs="flex justify-center items-center headerLayout" header="Link" [(visible)]="linkGenerated"
+        [style]="{width: '60vw'}">
+        <label>link</label>
+
+    </p-dialog>
 </div>
